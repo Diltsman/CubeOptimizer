@@ -6,6 +6,12 @@ class cube {
 
 public:
 private:
+  face &Right() { return *mRight; }
+  face &Up() { return *mUp; }
+  face &Front() { return *mFront; }
+  face &Left() { return *mLeft; }
+  face &Down() { return *mDown; }
+  face &Back() { return *mBack; }
   face c[6];
   face *mRight = c + 0;
   face *mUp = c + 1;
