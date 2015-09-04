@@ -21,6 +21,11 @@ public:
     Cycle(right[0][1], right[1][2], right[2][1], right[1][0]);
     Cycle(up[1][2], back[1][0], down[1][2], front[1][2]);
   }
+  void RightCCW() {
+    RightCW();
+    RightCW();
+    RightCW();
+  }
 
 private:
   template <typename... Ts> void Cycle(Ts &... ts) { CycleImpl(ts...); }
