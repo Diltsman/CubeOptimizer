@@ -3,6 +3,8 @@
 
 #include <utility>
 
+enum class Face { Right, Up, Front, Left, Down, Back };
+
 class cube {
   using face = char[3][3];
 
@@ -25,6 +27,32 @@ public:
     RightCW();
     RightCW();
     RightCW();
+  }
+
+protected:
+  void SetPosition(Face face, std::size_t row, std::size_t column, char value) {
+    cube::face *selected;
+    switch (face) {
+    case Face::Back:
+      selected = &Back();
+      break;
+    case Face::Down:
+      selected = &Down();
+      break;
+    case Face::Front:
+      selected = &Front();
+      break;
+    case Face::Left:
+      selected = &Left();
+      break;
+    case Face::Right:
+      selected = &Right();
+      break;
+    case Face::Up:
+      selected = &Up();
+      break;
+    }
+    (*selected)[row][column] = value;
   }
 
 private:
