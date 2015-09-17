@@ -1,6 +1,7 @@
 #ifndef SRC_CUBE_H
 #define SRC_CUBE_H
 
+#include <stdexcept>
 #include <utility>
 
 enum class Face { Right, Up, Front, Left, Down, Back };
@@ -28,41 +29,39 @@ public:
     RightCW();
     RightCW();
   }
+  face &GetFace(Face face) {
+    switch (face) {
+    case Face::Back:
+      return Back();
+    case Face::Down:
+      return Down();
+    case Face::Front:
+      return Front();
+    case Face::Left:
+      return Left();
+    case Face::Right:
+      return Right();
+    case Face::Up:
+      return Up();
+    }
+    throw std::invalid_argument{"Must request a valid face"};
+  }
+  char GetPosition(Face face, std::size_t row, std::size_t column) {
+    return GetFace(face)[row][column];
+  }
 
 protected:
   void SetPosition(Face face, std::size_t row, std::size_t column, char value) {
-    cube::face *selected;
-    switch (face) {
-    case Face::Back:
-      selected = &Back();
-      break;
-    case Face::Down:
-      selected = &Down();
-      break;
-    case Face::Front:
-      selected = &Front();
-      break;
-    case Face::Left:
-      selected = &Left();
-      break;
-    case Face::Right:
-      selected = &Right();
-      break;
-    case Face::Up:
-      selected = &Up();
-      break;
-    }
-    (*selected)[row][column] = value;
+    GetFace(face)[row][column] = value;
   }
 
 private:
   template <typename... Ts> void Cycle(Ts &... ts) { CycleImpl(ts...); }
-  template <typename T1, typename T2, typename... Ts>
-  void CycleImpl(T1 &t1, T2 &t2, Ts &... ts) {
-    std::swap(t1, t2);
-    CycleImpl(t2, ts...);
+  template <typename T1, typename... Ts> T1 &CycleImpl(T1 &t1, Ts &... ts) {
+    std::swap(t1, CycleImpl(ts...));
+    return t1;
   }
-  template <typename T> void CycleImpl(T &t) {}
+  template <typename T> T &CycleImpl(T &t) { return t; }
   void CycleImpl() {}
 
   face &Right() { return *mRight; }
