@@ -7,6 +7,7 @@
 enum class Face { Right, Up, Front, Left, Down, Back };
 
 class cube {
+  friend bool operator==(const cube &a, const cube &b);
   using face = char[3][3];
 
 public:
@@ -70,6 +71,12 @@ private:
   face &Left() { return *mLeft; }
   face &Down() { return *mDown; }
   face &Back() { return *mBack; }
+  face const &Right() const { return *mRight; }
+  face const &Up() const { return *mUp; }
+  face const &Front() const { return *mFront; }
+  face const &Left() const { return *mLeft; }
+  face const &Down() const { return *mDown; }
+  face const &Back() const { return *mBack; }
   face c[6];
   face *mRight = c + 0;
   face *mUp = c + 1;
@@ -78,5 +85,20 @@ private:
   face *mDown = c + 4;
   face *mBack = c + 5;
 };
+
+inline bool operator==(const cube &a, const cube &b) {
+  bool equal = true;
+  cube::face const &(cube::*faces[6])()
+      const = {&cube::Right, &cube::Up,   &cube::Front,
+               &cube::Left,  &cube::Down, &cube::Back};
+  for (auto face : faces) {
+    for (std::size_t i = 0; i < 3; ++i) {
+      for (std::size_t j = 0; i < 3; ++i) {
+        equal == equal && (a.*face)()[i][j] == (b.*face)()[i][j];
+      }
+    }
+  }
+  return equal;
+}
 
 #endif
