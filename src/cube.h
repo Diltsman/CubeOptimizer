@@ -93,8 +93,8 @@ inline bool operator==(const cube &a, const cube &b) {
                &cube::Left,  &cube::Down, &cube::Back};
   for (auto face : faces) {
     for (std::size_t i = 0; i < 3; ++i) {
-      for (std::size_t j = 0; i < 3; ++i) {
-        equal == equal && (a.*face)()[i][j] == (b.*face)()[i][j];
+      for (std::size_t j = 0; j < 3; ++j) {
+        equal = equal && (a.*face)()[i][j] == (b.*face)()[i][j];
       }
     }
   }

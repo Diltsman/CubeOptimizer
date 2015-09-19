@@ -33,6 +33,9 @@ TEST(CubeTests, RightCW) {
   target.SetPosition(Face::Back, 0, 0, ComputeValue(Face::Up, 2, 2));
   target.SetPosition(Face::Back, 1, 0, ComputeValue(Face::Up, 1, 2));
   target.SetPosition(Face::Back, 2, 0, ComputeValue(Face::Up, 0, 2));
+  target.SetPosition(Face::Up, 0, 2, ComputeValue(Face::Front, 0, 2));
+  target.SetPosition(Face::Up, 1, 2, ComputeValue(Face::Front, 1, 2));
+  target.SetPosition(Face::Up, 2, 2, ComputeValue(Face::Front, 2, 2));
   target.SetPosition(Face::Right, 0, 0, ComputeValue(Face::Right, 2, 0));
   target.SetPosition(Face::Right, 0, 1, ComputeValue(Face::Right, 1, 0));
   target.SetPosition(Face::Right, 0, 2, ComputeValue(Face::Right, 0, 0));
