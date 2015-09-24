@@ -26,9 +26,18 @@ public:
     Cycle(up[1][2], back[1][0], down[1][2], front[1][2]);
   }
   void RightCCW() {
-    RightCW();
-    RightCW();
-    RightCW();
+    face &right = Right();
+    face &up = Up();
+    face &front = Front();
+    face &back = Back();
+    face &down = Down();
+    // Corners
+    Cycle(right[2][0], right[2][2], right[0][2], right[0][0]);
+    Cycle(front[0][2], down[0][2], back[2][0], up[0][2]);
+    Cycle(front[2][2], down[2][2], back[0][0], up[2][2]);
+    // Edges
+    Cycle(right[1][0], right[2][1], right[1][2], right[0][1]);
+    Cycle(front[1][2], down[1][2], back[1][0], up[1][2]);
   }
   face &GetFace(Face face) {
     switch (face) {
