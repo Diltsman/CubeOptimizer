@@ -50,3 +50,32 @@ TEST(CubeTests, RightCW) {
 
   EXPECT_EQ(target, test);
 }
+
+TEST(CubeTests, RightCCW) {
+  TestCube target;
+  target.SetPosition(Face::Front, 0, 2, ComputeValue(Face::Up, 0, 2));
+  target.SetPosition(Face::Front, 1, 2, ComputeValue(Face::Up, 1, 2));
+  target.SetPosition(Face::Front, 2, 2, ComputeValue(Face::Up, 2, 2));
+  target.SetPosition(Face::Down, 0, 2, ComputeValue(Face::Front, 0, 2));
+  target.SetPosition(Face::Down, 1, 2, ComputeValue(Face::Front, 1, 2));
+  target.SetPosition(Face::Down, 2, 2, ComputeValue(Face::Front, 2, 2));
+  target.SetPosition(Face::Back, 0, 0, ComputeValue(Face::Down, 2, 2));
+  target.SetPosition(Face::Back, 1, 0, ComputeValue(Face::Down, 1, 2));
+  target.SetPosition(Face::Back, 2, 0, ComputeValue(Face::Down, 0, 2));
+  target.SetPosition(Face::Up, 0, 2, ComputeValue(Face::Back, 2, 0));
+  target.SetPosition(Face::Up, 1, 2, ComputeValue(Face::Back, 1, 0));
+  target.SetPosition(Face::Up, 2, 2, ComputeValue(Face::Back, 0, 0));
+  target.SetPosition(Face::Right, 0, 0, ComputeValue(Face::Right, 0, 2));
+  target.SetPosition(Face::Right, 0, 1, ComputeValue(Face::Right, 1, 2));
+  target.SetPosition(Face::Right, 0, 2, ComputeValue(Face::Right, 2, 2));
+  target.SetPosition(Face::Right, 1, 0, ComputeValue(Face::Right, 0, 1));
+  target.SetPosition(Face::Right, 1, 2, ComputeValue(Face::Right, 2, 1));
+  target.SetPosition(Face::Right, 2, 0, ComputeValue(Face::Right, 0, 0));
+  target.SetPosition(Face::Right, 2, 1, ComputeValue(Face::Right, 1, 0));
+  target.SetPosition(Face::Right, 2, 2, ComputeValue(Face::Right, 2, 0));
+
+  TestCube test;
+  test.RightCCW();
+
+  EXPECT_EQ(target, test);
+}
