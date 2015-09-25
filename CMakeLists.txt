@@ -4,7 +4,7 @@ project(cube)
 set(gtest_force_shared_crt ON)
 
 add_subdirectory(gtest)
-add_executable(cube src/cube.cpp src/cube.h)
+add_executable(cube src/cube.cpp src/cube.h src/main.cpp)
 
 include_directories(gtest/include)
 add_executable(cube_test test/cube_tests.cpp)
