@@ -30,6 +30,8 @@ void cube::RightCCW() {
   Cycle(front[1][2], down[1][2], back[1][0], up[1][2]);
 }
 
+void cube::LeftCW() {}
+
 cube::face &cube::GetFace(Face face) {
   switch (face) {
   case Face::Back:

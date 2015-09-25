@@ -13,6 +13,7 @@ class cube {
 public:
   void RightCW();
   void RightCCW();
+  void LeftCW();
   char GetPosition(Face face, std::size_t row, std::size_t column) {
     return GetFace(face)[row][column];
   }
