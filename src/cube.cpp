@@ -1,6 +1,6 @@
 #include "cube.h"
 
-void cube::RightCW() {
+void cube::R() {
   face &right = Right();
   face &up = Up();
   face &front = Front();
@@ -15,7 +15,7 @@ void cube::RightCW() {
   Cycle(up[1][2], back[1][0], down[1][2], front[1][2]);
 }
 
-void cube::RightCCW() {
+void cube::R_() {
   face &right = Right();
   face &up = Up();
   face &front = Front();
@@ -30,7 +30,7 @@ void cube::RightCCW() {
   Cycle(front[1][2], down[1][2], back[1][0], up[1][2]);
 }
 
-void cube::LeftCW() {
+void cube::L() {
   face &left = Left();
   face &up = Up();
   face &front = Front();
@@ -45,7 +45,7 @@ void cube::LeftCW() {
   Cycle(up[1][0], front[1][0], down[1][0], back[1][2]);
 }
 
-void cube::LeftCCW() {
+void cube::L_() {
   face &left = Left();
   face &up = Up();
   face &front = Front();

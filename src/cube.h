@@ -11,10 +11,10 @@ class cube {
   using face = char[3][3];
 
 public:
-  void RightCW();
-  void RightCCW();
-  void LeftCW();
-  void LeftCCW();
+  void R();
+  void R_();
+  void L();
+  void L_();
   char GetPosition(Face face, std::size_t row, std::size_t column) {
     return GetFace(face)[row][column];
   }
