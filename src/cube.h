@@ -14,6 +14,7 @@ public:
   void RightCW();
   void RightCCW();
   void LeftCW();
+  void LeftCCW();
   char GetPosition(Face face, std::size_t row, std::size_t column) {
     return GetFace(face)[row][column];
   }
