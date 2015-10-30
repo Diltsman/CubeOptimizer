@@ -22,7 +22,7 @@ int ComputeValue(Face face, int row, int column) {
   return static_cast<int>(face) << 4 | row << 2 | column;
 }
 
-TEST(CubeTests, RightCW) {
+TEST(CubeTests, R) {
   TestCube target;
   target.SetPosition(Face::Front, 0, 2, ComputeValue(Face::Down, 0, 2));
   target.SetPosition(Face::Front, 1, 2, ComputeValue(Face::Down, 1, 2));
@@ -46,12 +46,12 @@ TEST(CubeTests, RightCW) {
   target.SetPosition(Face::Right, 2, 2, ComputeValue(Face::Right, 0, 2));
 
   TestCube test;
-  test.RightCW();
+  test.R();
 
   EXPECT_EQ(target, test);
 }
 
-TEST(CubeTests, RightCCW) {
+TEST(CubeTests, R_) {
   TestCube target;
   target.SetPosition(Face::Front, 0, 2, ComputeValue(Face::Up, 0, 2));
   target.SetPosition(Face::Front, 1, 2, ComputeValue(Face::Up, 1, 2));
@@ -75,12 +75,12 @@ TEST(CubeTests, RightCCW) {
   target.SetPosition(Face::Right, 2, 2, ComputeValue(Face::Right, 2, 0));
 
   TestCube test;
-  test.RightCCW();
+  test.R_();
 
   EXPECT_EQ(target, test);
 }
 
-TEST(CubeTests, LeftCW) {
+TEST(CubeTests, L) {
   TestCube target;
   target.SetPosition(Face::Front, 0, 0, ComputeValue(Face::Up, 0, 0));
   target.SetPosition(Face::Front, 1, 0, ComputeValue(Face::Up, 1, 0));
@@ -104,12 +104,12 @@ TEST(CubeTests, LeftCW) {
   target.SetPosition(Face::Left, 2, 2, ComputeValue(Face::Left, 0, 2));
 
   TestCube test;
-  test.LeftCW();
+  test.L();
 
   EXPECT_EQ(target, test);
 }
 
-TEST(CubeTests, LeftCCW) {
+TEST(CubeTests, L_) {
   TestCube target;
   target.SetPosition(Face::Front, 0, 0, ComputeValue(Face::Down, 0, 0));
   target.SetPosition(Face::Front, 1, 0, ComputeValue(Face::Down, 1, 0));
@@ -133,7 +133,7 @@ TEST(CubeTests, LeftCCW) {
   target.SetPosition(Face::Left, 2, 2, ComputeValue(Face::Left, 2, 0));
 
   TestCube test;
-  test.LeftCCW();
+  test.L_();
 
   EXPECT_EQ(target, test);
 }
